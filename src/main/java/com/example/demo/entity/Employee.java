@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.OnDelete;
 
 import lombok.AllArgsConstructor;
@@ -45,7 +46,10 @@ public class Employee {
 	@Column(name = "hire_date")
 	private LocalDate hireDate;
 	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	private Salary salary;
+//	@OneToOne(fetch = FetchType.LAZY, optional = false)
+//	private Salary salary;
 
+	@Formula("substr(first_name, 1, 3)")
+	private String isBornBefore1990;
+	
 }
